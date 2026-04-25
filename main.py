@@ -35,6 +35,9 @@ def button_press():
         temp = data["temp"]
         pressure = data["pressure"]
         humidity = data["humidity"]
+    utils.plot_tvt(folder_path, time, temp)
+    utils.plot_pvt(folder_path, time, pressure)
+    utils.plot_hvt(folder_path, time, humidity)
 
 
 def open_file(folder_path):
