@@ -1,0 +1,9 @@
+{
+  "title": "none",
+  "style": "dark_background",
+  "graph_type": "line",
+  "color": "red",
+  "grid": true,
+  "legend": true,
+  "label": "Altitude"
+}
