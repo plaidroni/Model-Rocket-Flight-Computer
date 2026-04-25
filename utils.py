@@ -1,3 +1,4 @@
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import matplotlib.pyplot as plt
 #!/usr/bin/env python3
 import os
@@ -19,20 +20,21 @@ def create_folder(base_dir, folder_name_start):
     return folder_path
 
 def plot_tvt(folder_path, time, temp):
-    plot_file = os.path.join(folder_path, "temperature_plot.png")
-    plt.figure()
-    plt.plot(time, temp, label="Temperature (°C)", color='red')
-    plt.xlabel("Time")
-    plt.ylabel("Temperature")
-    plt.title("Temperature vs Time")
-    plt.legend()
-    plt.grid()
+    tvt_plot_file = os.path.join(folder_path, "temperature_plot.png")
+    fig, ax = plt.subplots()
+    ax.plot(time, temp, label="Temperature", color='red')
+    ax.set_title("Temperature vs Time")
+    ax.set_xlabel("Time")
+    ax.set_ylabel("Temp")
+    ax.legend()
+    ax.grid()
 
-    plt.savefig(plot_file)
+    plt.savefig(tvt_plot_file)
     plt.show()
+    return fig
 
 def plot_pvt(folder_path, time, pressure):
-    plot_file = os.path.join(folder_path, "pressure_plot.png")
+    pvt_plot_file = os.path.join(folder_path, "pressure_plot.png")
     plt.figure()
     plt.plot(time, pressure, label="pressure (°C)", color='red')
     plt.xlabel("Time")
@@ -41,11 +43,12 @@ def plot_pvt(folder_path, time, pressure):
     plt.legend()
     plt.grid()
 
-    plt.savefig(plot_file)
+    plt.savefig(pvt_plot_file)
     plt.show()
+    return pvt_plot_file
 
 def plot_hvt(folder_path, time, humidity):
-    plot_file = os.path.join(folder_path, "humidity_plot.png")
+    hvt_plot_file = os.path.join(folder_path, "humidity_plot.png")
     plt.figure()
     plt.plot(time, humidity, label="humidity (°C)", color='red')
     plt.xlabel("Time")
@@ -54,5 +57,6 @@ def plot_hvt(folder_path, time, humidity):
     plt.legend()
     plt.grid()
 
-    plt.savefig(plot_file)
+    plt.savefig(hvt_plot_file)
     plt.show()
+    return hvt_plot_file

@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+
 import tkinter as tk
 from tkinter import filedialog
 import utils
@@ -35,9 +37,11 @@ def button_press():
         temp = data["temp"]
         pressure = data["pressure"]
         humidity = data["humidity"]
-    utils.plot_tvt(folder_path, time, temp)
-    utils.plot_pvt(folder_path, time, pressure)
-    utils.plot_hvt(folder_path, time, humidity)
+    canvas = FigureCanvasTkAgg(utils.plot_tvt(folder_path, time, temp), master = TvA_frame)
+    canvas.draw()
+    canvas.get_tk_widget().pack(fill="both", expand=True)
+    #utils.plot_pvt(folder_path, time, pressure)
+    #utils.plot_hvt(folder_path, time, humidity)
 
 
 def open_file(folder_path):
