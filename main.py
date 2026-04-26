@@ -5,10 +5,10 @@ import os
 from PIL import Image, ImageTk
 import json
 
-base_dir = os.path.join(os.getcwd())
+script_path = os.path.abspath(__file__)
+script_dir = os.path.dirname(script_path)
 
-
-with open(os.path.join(base_dir, 'graph_settings.json'), 'r') as file:
+with open(os.path.join(script_dir, 'graph_settings.json'), 'r') as file:
     settings = json.load(file)
 
 current_value = 0
