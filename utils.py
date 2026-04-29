@@ -46,7 +46,7 @@ def create_graphs(txt_file, settings):
     #create data based on settings
     save_fig(plot_graph(time, temp, settings, "time", "temp", "time vs temp"), folder_path, "graph1.png")
     save_fig(plot_graph(time, altitude, settings, "altitude", "time", "altitude vs time"), folder_path, "graph2.png")
-    save_fig(plot_graph(altitude, air_density, settings, altitude, air_density, "altitude vs air_density"), folder_path, "graph3.png")
+    save_fig(plot_graph(altitude, air_density, settings, "altitude", "air_density", "altitude vs air_density"), folder_path, "graph3.png")
     return folder_path
 
 def plot_graph(x, y, settings, ylabel, xlabel, label):
