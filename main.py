@@ -13,6 +13,7 @@ with open(os.path.join(script_dir, 'graph_settings.json'), 'r') as file:
 
 current_value = 0
 max_altitude = 10000
+btn = True
 
 def up_button():
     global current_value
@@ -47,6 +48,15 @@ def load_graphs(folder):
         label.image = photo
         images.append(photo)
 
+def switch_mode():
+    global btn
+    if btn:
+        mode_btn.configure(text = 'Simulation')
+        btn = False
+    elif not btn:
+        mode_btn.configure(text='Data Processing')
+        btn = True
+
 
 #root setup
 root = tk.Tk()
@@ -64,9 +74,11 @@ top_frame.pack(side="top", fill="x")
 top_format = {"font": ("Terminal", 12), "bg": "gray26", "fg": "gray54", 'relief': 'flat', 'activebackground': 'red', 'borderwidth': '0'}
 title_label = tk.Label(top_frame, text='Rocket Launch Data Visualizer', **top_format)
 exit_btn = tk.Button(top_frame, text = 'X', command = root.destroy, **top_format, width=3)
+mode_btn = tk.Button(top_frame, text = 'Data Processing', command = switch_mode, **top_format)
 #widget placement
 title_label.pack(side="left")
 exit_btn.pack(side='right', anchor='e')
+mode_btn.pack(side='right', anchor='e')
 
 #btm_frame
 btm_frame = tk.Frame(root, bg='gray26', height='200', relief='solid', borderwidth = 1)
@@ -127,7 +139,10 @@ wip3.pack()
 
 
 
-Stacked_frames = [TvA_frame, TvAc_frame, TvAcc_frame]
-Stacked_frames[current_value].tkraise()
+Stacked_frames_DP = [TvA_frame, TvAc_frame, TvAcc_frame]
+Stacked_frames_DP[current_value].tkraise()
+
+Stacked_frames_M = [TvA_frame, TvAc_frame, TvAcc_frame]
+Stacked_frames_M[current_value].tkraise()
 
 root.mainloop()
