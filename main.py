@@ -43,7 +43,7 @@ def load_graphs(folder):
     for label, name in zip(labels, names):
         img = Image.open(os.path.join(folder, name))
         photo = ImageTk.PhotoImage(img)
-        label.config(image=photo)
+        label.config(image=photo, text=name)
         label.image = photo
         images.append(photo)
 
